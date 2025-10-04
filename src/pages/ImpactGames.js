@@ -9,7 +9,7 @@ function ImpactGames() {
       <h1>Home Page</h1>
       <button onClick={() => navigate("/AstronautGame")}>Go to AstronautGame</button>
       <button onClick={() => navigate("/FarmerGame")} style={{ marginLeft: "10px" }}>
-        Go to Impact Games
+        Go to Farmer Games
       </button>
       <button onClick={() => navigate("/PilotGame")} style={{ marginLeft: "10px" }}>
         Go to Pilot Game

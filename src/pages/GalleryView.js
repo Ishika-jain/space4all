@@ -12,6 +12,9 @@ function GalleryView() {
       <button onClick={() => navigate("/ImpactGames")} style={{ marginLeft: "10px" }}>
         Go to ImpactGames
       </button>
+      <button onClick={() => navigate("/Glossary")} style={{ marginLeft: "10px" }}>
+        Go to Glossary
+      </button>
     </div>
   )
 }
