@@ -191,7 +191,7 @@ export default function Landing() {
           className="book"
           sx={{
             width: "100%",
-            height: "100%",
+            height: "120%",
             position: "relative",
             transformStyle: "preserve-3d",
             transition: "all 0.6s ease",
@@ -243,7 +243,7 @@ export default function Landing() {
             <Box
               sx={{
                 position: "absolute",
-                width: "100%",
+                width: "80%",
                 height: "100%",
                 padding: "30px",
                 display: "flex",
@@ -346,7 +346,7 @@ export default function Landing() {
           </Box>
         </Box>
       </Box>
-            <Box display="flex" justifyContent="center" gap={2} flexWrap="wrap" pt={2} paddingTop={"60px"}>
+            <Box display="flex" justifyContent="center" gap={2} flexWrap="wrap" pt={2} paddingTop={"120px"}>
             <Button
               variant="contained"
               size="large"

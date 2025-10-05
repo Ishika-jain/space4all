@@ -45,7 +45,7 @@ export default function Chatbot() {
         },
         {
           headers: {
-            Authorization: `Bearer YOUR_OPENAI_API_KEY_HERE`, // ⚠️ Replace with your actual key for testing
+            Authorization: `Bearer `,
           },
         }
       );
@@ -72,7 +72,7 @@ export default function Chatbot() {
           position: "fixed",
           bottom: "25px",
           right: "25px",
-          background: "yellow",
+          background: "white",
           color: "white",
           border: "none",
           borderRadius: "50%",
