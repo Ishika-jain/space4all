@@ -45,7 +45,7 @@ export default function Chatbot() {
         },
         {
           headers: {
-            Authorization: `Bearer YOUR_OPENAI_API_KEY_HERE`, // ⚠️ Replace with your actual key for testing
+            Authorization: `Bearer `,
           },
         }
       );
