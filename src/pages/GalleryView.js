@@ -122,7 +122,7 @@ function GalleryView() {
           <Box
             display="grid"
             gap={3}
-            sx={{ gridTemplateColumns: { xs: "1fr", md: "1fr 1fr", lg: "1fr 1fr 1fr" } }}
+            sx={{ gridTemplateColumns: { xs: "1fr", md: "1fr 1fr", lg: "1fr 1fr" } }}
           >
             <Card
               sx={{
