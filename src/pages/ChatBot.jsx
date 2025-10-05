@@ -1,5 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
+import WbSunny from "@mui/icons-material/WbSunny";
+import RocketIcon from '@mui/icons-material/Rocket';
+import SpaceDashboardIcon from '@mui/icons-material/SpaceDashboard';
+
 
 export default function Chatbot() {
   const [messages, setMessages] = useState([
@@ -68,7 +72,7 @@ export default function Chatbot() {
           position: "fixed",
           bottom: "25px",
           right: "25px",
-          background: "#007bff",
+          background: "#yellow",
           color: "white",
           border: "none",
           borderRadius: "50%",
@@ -81,7 +85,7 @@ export default function Chatbot() {
         }}
         title="Chat with SolarBot"
       >
-        {isOpen ? "✖" : "💬"}
+        {isOpen ? <div style={{ color: "black" }}>✖</div> : <RocketIcon size={80} sx={{ color: "#ff9800" }} />}
       </button>
 
       {/* Popup Chat Window */}
