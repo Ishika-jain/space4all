@@ -1,8 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useContext } from "react";
+
+import { UserContext } from "../context/UserContext";
 
 export default function ReadBook() {
   const [scrollProgress, setScrollProgress] = useState(0);
-  const containerRef = useRef(null);
+  // const containerRef = useRef(null);
+  const { user } = useContext(UserContext);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,186 +50,590 @@ export default function ReadBook() {
   const bookRotationX = Math.sin(scrollProgress * Math.PI * 2) * -2;
   const bookScale = 1 - scrollProgress * 0.03;
 
-  const rightPages = [
-    {
-      title: "The Dynamic Sun",
-      content: (
-        <>
-          <p>Our star is far from static. The Sun's surface churns and boils with convective currents, transporting heat from the core to the surface at speeds of thousands of kilometers per hour.</p>
-          <p>These movements create complex magnetic fields that twist and tangle, storing enormous amounts of energy. When these fields suddenly snap and reconfigure, they release that energy in explosive outbursts.</p>
-          <h3>A Nuclear Powerhouse</h3>
-          <p>At its core, the Sun fuses 600 million tons of hydrogen into helium every second, releasing the energy equivalent of 100 billion nuclear bombs. This continuous nuclear reaction has been burning for 4.6 billion years.</p>
-        </>
-      ),
-      pageNum: 2
-    },
-    {
-      title: "Magnetic Mysteries",
-      content: (
-        <>
-          <p>Sunspots are windows into the Sun's powerful magnetic field. They appear in pairs or groups, with opposite magnetic polarities—like the poles of a magnet.</p>
-          <p>Some sunspot groups grow to enormous sizes, spanning distances greater than the diameter of Jupiter. The largest recorded sunspot group could have swallowed multiple Earths with room to spare.</p>
-          <h3>Predicting Solar Activity</h3>
-          <p>Scientists monitor sunspot numbers to predict solar activity. Higher sunspot counts typically mean more solar flares and coronal mass ejections, which can impact satellites, power grids, and communications on Earth.</p>
-        </>
-      ),
-      pageNum: 4
-    },
-    {
-      title: "The Power of Flares",
-      content: (
-        <>
-          <p>The energy released in the largest solar flares equals billions of megatons of TNT. In just a few minutes, they emit as much energy as the Sun normally radiates in several days.</p>
-          <h3>Classification System</h3>
-          <p>Solar flares are classified by their X-ray brightness: C-class (small), M-class (medium), and X-class (large). Each class is ten times more powerful than the previous one.</p>
-          <div className="quote">
-            "A single X-class flare releases the energy equivalent of a billion hydrogen bombs exploding simultaneously."
-          </div>
-          <p>The most powerful flare ever recorded occurred on November 4, 2003, saturating instruments at X28+ class—possibly even stronger.</p>
-        </>
-      ),
-      pageNum: 6
-    },
-    {
-      title: "Coronal Ejections",
-      content: (
-        <>
-          <div className="illustration-container">
-            <div className="particle" style={{top: '50px', left: '150px', animationDelay: '0s'}}></div>
-            <div className="particle" style={{top: '100px', left: '300px', animationDelay: '1s'}}></div>
-            <div className="particle" style={{top: '30px', left: '500px', animationDelay: '0.5s'}}></div>
-          </div>
-          <p>Coronal Mass Ejections (CMEs) are massive expulsions of plasma and magnetic field from the Sun's corona. A single CME can contain a billion tons of matter traveling at millions of kilometers per hour.</p>
-          <p>When directed at Earth, CMEs can trigger geomagnetic storms that disrupt satellite operations, radio communications, and electrical power grids.</p>
-        </>
-      ),
-      pageNum: 8
-    },
-    {
-      title: "Magnetosphere Dynamics",
-      content: (
-        <>
-          <p>Earth's magnetosphere extends about 60,000 kilometers toward the Sun but trails behind Earth for millions of kilometers on the night side, creating a long "magnetotail."</p>
-          <h3>When Shields Fail</h3>
-          <p>During severe geomagnetic storms, the magnetosphere can be compressed, allowing solar particles to penetrate deeper into Earth's atmosphere. This can cause spectacular auroras at lower latitudes than usual.</p>
-          <div className="quote">
-            "Without our magnetic shield, the solar wind would have stripped away our atmosphere billions of years ago, leaving Earth as barren as Mars."
-          </div>
-        </>
-      ),
-      pageNum: 10
-    },
-    {
-      title: "Living With Solar Weather",
-      content: (
-        <>
-          <p>In our modern, technology-dependent world, understanding and predicting solar weather has become crucial. Space weather forecasters monitor the Sun 24/7, watching for signs of impending eruptions.</p>
-          <h3>Protecting Our Technology</h3>
-          <p>Power companies can take preventive measures when warned of incoming CMEs. Airlines reroute polar flights to avoid radiation exposure. Satellites can be placed in protective modes.</p>
-          <p>As we expand further into space with plans for lunar bases and Mars missions, understanding solar weather becomes even more critical for protecting astronauts and equipment.</p>
-        </>
-      ),
-      pageNum: 12
-    },
-    {
-      title: "Conclusion",
-      content: (
-        <>
-          <p>Solar weather is a reminder of our intimate connection to the cosmos. The same nuclear reactions that power the Sun create the environment that makes life on Earth possible—yet they also pose challenges we must understand and prepare for.</p>
-          <p>As our technology advances and we venture further into space, our relationship with solar weather will only deepen. The Sun that gives us life also demands our respect and vigilance.</p>
-          <div className="quote">
-            "In understanding the Sun, we understand ourselves—children of a star, living in its embrace, forever dancing to its cosmic rhythm."
-          </div>
-          <p style={{textAlign: 'center', marginTop: '40px', fontStyle: 'italic'}}>~ The End ~</p>
-        </>
-      ),
-      pageNum: 13
-    }
-  ];
 
-  const leftPages = [
-    {
-      title: "Introduction",
-      content: (
-        <>
-          <p>For billions of years, our Sun has been the source of all life on Earth. Its warm rays nurture our planet, driving weather patterns and sustaining the intricate web of life.</p>
-          <p>Yet beneath its serene appearance lies a tempestuous beast—a roiling mass of nuclear fury that constantly unleashes powerful forces into the cosmos.</p>
-          <h3>What is Solar Weather?</h3>
-          <p>Solar weather refers to the various phenomena occurring on and around the Sun that can affect Earth and the entire solar system. These include sunspots, solar flares, coronal mass ejections, and the ever-present solar wind.</p>
-        </>
-      ),
-      pageNum: 1
-    },
-    {
-      title: "Sunspots",
-      content: (
-        <>
-          <p>Sunspots are dark regions on the Sun's surface where intense magnetic fields prevent hot plasma from reaching the surface. Though they appear dark, they are still incredibly hot—around 3,500°C.</p>
-          <h3>The Solar Cycle</h3>
-          <p>The number of sunspots varies in an approximately 11-year cycle. During solar maximum, the Sun's surface may host dozens of sunspot groups. At solar minimum, weeks may pass without a single spot.</p>
-          <div className="quote">
-            "The Sun's heartbeat pulses with an 11-year rhythm that shapes space weather throughout our cosmic neighborhood."
-          </div>
-        </>
-      ),
-      pageNum: 3
-    },
-    {
-      title: "Solar Flares",
-      content: (
-        <>
-          <div className="illustration-container">
-            <div className="sun"></div>
-            <div className="solar-flare" style={{top: '58px', right: '90px', transform: 'rotate(-25deg)'}}></div>
-            <div className="solar-flare" style={{top: '58px', right: '90px', transform: 'rotate(25deg)', animationDelay: '1s'}}></div>
-          </div>
-          <p>Solar flares are sudden, intense bursts of electromagnetic radiation from the Sun's atmosphere. They occur when magnetic energy built up in the solar atmosphere is suddenly released.</p>
-        </>
-      ),
-      pageNum: 5
-    },
-    {
-      title: "Solar Wind",
-      content: (
-        <>
-          <p>The solar wind is a continuous stream of charged particles flowing from the Sun's corona. This plasma travels at speeds ranging from 250 to 750 kilometers per second.</p>
-          <h3>The Heliosphere</h3>
-          <p>The solar wind extends far beyond the planets, creating a vast bubble called the heliosphere. This region shields our solar system from interstellar radiation and cosmic rays.</p>
-          <div className="quote">
-            "An invisible river of plasma connects the Sun to every planet in our solar system."
-          </div>
-        </>
-      ),
-      pageNum: 7
-    },
-    {
-      title: "Earth's Shield",
-      content: (
-        <>
-          <div className="illustration-container">
-            <div className="orbit">
-              <div className="earth"></div>
-            </div>
-          </div>
-          <p>Our planet's magnetic field, generated by the churning of molten iron in Earth's outer core, forms a protective magnetosphere. This invisible shield deflects most of the solar wind's charged particles.</p>
-        </>
-      ),
-      pageNum: 9
-    },
-    {
-      title: "The Aurora",
-      content: (
-        <>
-          <div className="illustration-container">
-            <div className="aurora" style={{top: '50px', left: '150px'}}></div>
-            <div className="aurora" style={{top: '80px', left: '350px', animationDelay: '2.5s'}}></div>
-          </div>
-          <p>When solar particles penetrate Earth's magnetic shield near the poles, they collide with atmospheric gases, creating spectacular light displays known as aurora borealis in the north and aurora australis in the south.</p>
-        </>
-      ),
-      pageNum: 11
-    }
-  ];
+  // 6-10 years: Sun's POV, playful and story-like
+const leftPages_6_10 = [
+  {
+    title: "Hello, Earth!",
+    content: (
+      <>
+        <p>Hi there! I’m Sunny, your Sun! I wake up every day to give you warmth, light, and energy. Sometimes, I get so excited that my surface bubbles and dances like a giant cosmic soup!</p>
+        <h3>My Daily Adventure</h3>
+        <p>I love playing games with the planets—sometimes I hide spots on my face called sunspots, or send little bursts of energy as solar flares. It’s my way of saying hello!</p>
+      </>
+    ),
+    pageNum: 1
+  },
+  {
+    title: "My Spots",
+    content: (
+      <>
+        <p>Look! I’ve got dark spots—sunspots! Don’t worry, I’m still super hot inside. They show where my magnetic threads are twisting and turning, like invisible strings in a puppet show.</p>
+        <h3>Sunspot Party</h3>
+        <p>Every 11 years, I have a big sunspot party! Lots of spots appear, and I release even more energy for fun cosmic fireworks!</p>
+      </>
+    ),
+    pageNum: 3
+  },
+  {
+    title: "Fireworks in Space",
+    content: (
+      <>
+        <p>Sometimes I get really excited and shoot out bright bursts of energy—solar flares! They’re my way of sending sparkling waves across space to greet you.</p>
+      </>
+    ),
+    pageNum: 5
+  },
+  {
+    title: "My Invisible Kisses",
+    content: (
+      <>
+        <p>I blow invisible kisses called solar wind. They zip past planets at lightning speed and carry a little bit of me everywhere!</p>
+      </>
+    ),
+    pageNum: 7
+  },
+  {
+    title: "Earth’s Shield",
+    content: (
+      <>
+        <p>Earth has a magic shield called the magnetosphere. It protects your planet from my wild energy bursts, but sometimes I sneak a little through to say hello!</p>
+      </>
+    ),
+    pageNum: 9
+  },
+  {
+    title: "Colorful Light Show",
+    content: (
+      <>
+        <p>When my particles sneak past Earth’s shield near the poles, they dance with gases and make colorful auroras—my way of painting the sky just for you!</p>
+      </>
+    ),
+    pageNum: 11
+  }
+];
+
+const rightPages_6_10 = [
+  {
+    title: "Boiling Inside",
+    content: (
+      <>
+        <p>Inside me, plasma swirls and churns. I mix hydrogen into helium, releasing light and heat for everyone. Think of me as a giant cosmic kitchen, always cooking energy for Earth!</p>
+      </>
+    ),
+    pageNum: 2
+  },
+  {
+    title: "Magnetic Mischief",
+    content: (
+      <>
+        <p>My magnetic threads twist and tangle. When they snap, I throw a solar party called a flare. I’m full of surprises and love to play!</p>
+      </>
+    ),
+    pageNum: 4
+  },
+  {
+    title: "Powerful Bursts",
+    content: (
+      <>
+        <p>When I get really excited, I release energy equal to billions of fireworks at once! That’s the power of my solar flares.</p>
+      </>
+    ),
+    pageNum: 6
+  },
+  {
+    title: "Giant Space Clouds",
+    content: (
+      <>
+        <p>Sometimes I hurl huge clouds of plasma called coronal mass ejections. They zoom across space and can shake up satellites—my way of playing cosmic tag!</p>
+      </>
+    ),
+    pageNum: 8
+  },
+  {
+    title: "Magnetosphere Games",
+    content: (
+      <>
+        <p>Earth’s magnetic shield bends and stretches under my influence. I love playing gentle tug-of-war with it—it’s my favorite cosmic game!</p>
+      </>
+    ),
+    pageNum: 10
+  },
+  {
+    title: "Watching Humans",
+    content: (
+      <>
+        <p>Humans now watch me closely. They learn when I get excited so satellites, planes, and astronauts stay safe. I like seeing them prepare—it’s like we’re playing together safely!</p>
+      </>
+    ),
+    pageNum: 12
+  },
+  {
+    title: "Goodnight, Earth",
+    content: (
+      <>
+        <p>I am Sunny, your Sun, your cosmic friend! I give warmth, light, and fun surprises. Dance with me, Earth, and enjoy the cosmic adventure!</p>
+      </>
+    ),
+    pageNum: 13
+  }
+];
+
+
+// 10-18 years: Sun as a character, adventurous & scientific
+const leftPages_10_18 = [
+  {
+    title: "Introduction",
+    content: (
+      <>
+        <p>Greetings, Earthlings! I am Sol, the Sun. For billions of years, I’ve warmed your planet and powered life. But I am no ordinary star—I churn, twist, and flare with energy that stretches across the solar system.</p>
+        <h3>My World of Solar Weather</h3>
+        <p>My moods create solar weather: sunspots, flares, coronal mass ejections, and the solar wind. These events travel through space and interact with planets, sometimes in dramatic ways.</p>
+      </>
+    ),
+    pageNum: 1
+  },
+  {
+    title: "Sunspots",
+    content: (
+      <>
+        <p>Dark patches appear on my face—sunspots. They form where my magnetic fields twist and tangle. Though cooler than their surroundings, they are still scorching hot and reveal my hidden energy.</p>
+        <h3>The Solar Cycle</h3>
+        <p>Every 11 years, I cycle between calm and storm. During solar maximum, I produce many sunspots and energetic flares. At solar minimum, I am relatively quiet, resting before the next surge.</p>
+      </>
+    ),
+    pageNum: 3
+  },
+  {
+    title: "Solar Flares",
+    content: (
+      <>
+        <p>When my magnetic fields twist too tightly, I release sudden bursts of energy—solar flares. These flashes race across space, sometimes reaching Earth in minutes, affecting satellites, communications, and power grids.</p>
+      </>
+    ),
+    pageNum: 5
+  },
+  {
+    title: "Solar Wind",
+    content: (
+      <>
+        <p>I constantly stream charged particles—solar wind—throughout the solar system. These winds shape planetary magnetospheres, forming a protective bubble called the heliosphere that shields you from cosmic radiation.</p>
+      </>
+    ),
+    pageNum: 7
+  },
+  {
+    title: "Earth's Shield",
+    content: (
+      <>
+        <p>Earth has a magnetic shield called the magnetosphere. It bends and deflects most of my particles. During strong storms, however, some sneak through, producing auroras far from the poles.</p>
+      </>
+    ),
+    pageNum: 9
+  },
+  {
+    title: "The Aurora",
+    content: (
+      <>
+        <p>When my energetic particles collide with gases in Earth’s atmosphere, they create auroras—stunning light shows that dance across the skies. It’s my way of saying “hello” in brilliant colors!</p>
+      </>
+    ),
+    pageNum: 11
+  }
+];
+
+const rightPages_10_18 = [
+  {
+    title: "Dynamic and Powerful",
+    content: (
+      <>
+        <p>Inside me, plasma swirls and churns. Convective currents transport heat from my core to the surface, creating complex magnetic fields that twist, tangle, and store enormous energy. When released, they drive flares and coronal mass ejections.</p>
+      </>
+    ),
+    pageNum: 2
+  },
+  {
+    title: "Magnetic Mischief",
+    content: (
+      <>
+        <p>My magnetic fields are invisible threads threading through plasma. When they reconnect suddenly, I release energy explosively—sometimes as flares, sometimes as CMEs. I am playful, powerful, and unpredictable.</p>
+      </>
+    ),
+    pageNum: 4
+  },
+  {
+    title: "The Power of Flares",
+    content: (
+      <>
+        <p>Flares can release energy equal to billions of megatons of TNT in mere minutes. I classify them by X-ray brightness: C, M, and X classes, each ten times stronger than the previous. When I flare, I make my presence known!</p>
+      </>
+    ),
+    pageNum: 6
+  },
+  {
+    title: "Coronal Ejections",
+    content: (
+      <>
+        <p>Sometimes I hurl enormous clouds of plasma into space—coronal mass ejections (CMEs). They race across millions of kilometers, compressing planetary magnetospheres and triggering geomagnetic storms. I am both creator and disruptor!</p>
+      </>
+    ),
+    pageNum: 8
+  },
+  {
+    title: "Magnetosphere Games",
+    content: (
+      <>
+        <p>Earth’s magnetic shield stretches, bends, and reacts to my solar wind. I love to play gently or intensely, creating auroras that light up skies at latitudes where they’re rarely seen. I am a cosmic game master!</p>
+      </>
+    ),
+    pageNum: 10
+  },
+  {
+    title: "Humans Observe Me",
+    content: (
+      <>
+        <p>Modern humans study me closely, predicting my moods to protect satellites, aviation, and astronauts. Their understanding grows as they explore the Moon and Mars, because knowing me is crucial for survival in space.</p>
+      </>
+    ),
+    pageNum: 12
+  },
+  {
+    title: "Conclusion",
+    content: (
+      <>
+        <p>I am Sol—the giver of life, the cosmic storyteller, the fiery guardian of your solar system. My energy shapes your world, my flares remind you of my power, and my light connects us across space. Respect me, and we will continue this eternal dance.</p>
+      </>
+    ),
+    pageNum: 13
+  }
+];
+
+
+const leftPages_18_plus = [
+  {
+    title: "Introduction",
+    content: (
+      <>
+        <p>I am the Sun, a 4.6-billion-year-old star at the heart of your solar system. I provide energy, light, and warmth that sustain life on Earth. But beneath my radiant surface lies a complex, dynamic environment of plasma and magnetic fields.</p>
+        <h3>What is Solar Weather?</h3>
+        <p>Solar weather encompasses phenomena on and above my surface: sunspots, solar flares, coronal mass ejections, and the solar wind. These events propagate across space, influencing planetary atmospheres, technology, and even human activity in orbit.</p>
+      </>
+    ),
+    pageNum: 1
+  },
+  {
+    title: "Sunspots",
+    content: (
+      <>
+        <p>Sunspots are regions where my intense magnetic fields inhibit the upward flow of hot plasma, appearing darker than their surroundings. They reveal the structure of my magnetic field and are linked to the 11-year solar cycle of activity.</p>
+        <h3>The Solar Cycle</h3>
+        <p>During solar maximum, I produce numerous sunspots and frequent flares. At solar minimum, I appear calmer. Monitoring these cycles helps predict geomagnetic disturbances that affect Earth and space technology.</p>
+      </>
+    ),
+    pageNum: 3
+  },
+  {
+    title: "Solar Flares",
+    content: (
+      <>
+        <p>When my magnetic fields twist and store energy, they can suddenly snap and reconfigure, releasing enormous bursts of electromagnetic radiation—solar flares. These flares can reach Earth in minutes, impacting satellites, communications, and power grids.</p>
+      </>
+    ),
+    pageNum: 5
+  },
+  {
+    title: "Solar Wind",
+    content: (
+      <>
+        <p>My continuous flow of charged particles, the solar wind, moves through the heliosphere at speeds of 250–750 km/s. It shapes planetary magnetospheres, influences cosmic ray flux, and interacts dynamically with interplanetary space.</p>
+      </>
+    ),
+    pageNum: 7
+  },
+  {
+    title: "Earth's Shield",
+    content: (
+      <>
+        <p>Earth’s magnetosphere deflects most of my energetic particles, protecting the atmosphere and surface from high-energy bombardment. During intense geomagnetic storms, this shield can be compressed, letting particles penetrate further and produce auroral phenomena at lower latitudes.</p>
+      </>
+    ),
+    pageNum: 9
+  },
+  {
+    title: "The Aurora",
+    content: (
+      <>
+        <p>When my high-energy particles collide with atmospheric gases near the poles, they excite atoms and molecules, producing the aurora borealis and aurora australis. These dynamic light displays reveal the complex interactions between my solar wind and planetary magnetic fields.</p>
+      </>
+    ),
+    pageNum: 11
+  }
+];
+
+const rightPages_18_plus = [
+  {
+    title: "The Dynamic Sun",
+    content: (
+      <>
+        <p>My surface is a boiling sea of plasma, with convective currents transporting energy from the core. These flows create magnetic fields that twist, tangle, and store immense energy. When released, these fields drive flares and coronal mass ejections.</p>
+      </>
+    ),
+    pageNum: 2
+  },
+  {
+    title: "Magnetic Mysteries",
+    content: (
+      <>
+        <p>My magnetic fields are invisible threads threading through plasma, sometimes forming sunspot groups, loops, and prominences. When they reconnect, they release energy explosively, influencing space weather across the solar system.</p>
+      </>
+    ),
+    pageNum: 4
+  },
+  {
+    title: "The Power of Flares",
+    content: (
+      <>
+        <p>Flares are classified by X-ray flux: C-class (small), M-class (medium), and X-class (large). Each class is roughly ten times more powerful than the previous. The largest flares can emit energy equivalent to billions of megatons of TNT in minutes.</p>
+      </>
+    ),
+    pageNum: 6
+  },
+  {
+    title: "Coronal Ejections",
+    content: (
+      <>
+        <p>Coronal mass ejections (CMEs) are enormous expulsions of plasma and magnetic fields from my corona. Traveling at millions of kilometers per hour, CMEs can compress planetary magnetospheres, trigger geomagnetic storms, and disrupt satellites and power grids.</p>
+      </>
+    ),
+    pageNum: 8
+  },
+  {
+    title: "Magnetosphere Dynamics",
+    content: (
+      <>
+        <p>Earth’s magnetosphere responds dynamically to my solar wind and CMEs. Compression of the magnetotail and penetration of high-energy particles can produce auroras far from the poles, revealing the delicate balance between planetary shields and solar forces.</p>
+      </>
+    ),
+    pageNum: 10
+  },
+  {
+    title: "Living With Solar Weather",
+    content: (
+      <>
+        <p>Modern humans monitor my activity continuously. Predicting flares and CMEs is crucial for satellite operation, aviation safety, and astronaut protection. As humanity ventures further into space, understanding solar weather becomes vital for survival beyond Earth.</p>
+      </>
+    ),
+    pageNum: 12
+  },
+  {
+    title: "Conclusion",
+    content: (
+      <>
+        <p>I am your Sun—life-giver, destroyer, and cosmic storyteller. My energy shapes your world, your skies, and your technology. By studying me, you learn not only about space weather but also about your place in the cosmos, forever connected to my radiant heart.</p>
+      </>
+    ),
+    pageNum: 13
+  }
+];
+
+
+  // const rightPages = [
+  //   {
+  //     title: "The Dynamic Sun",
+  //     content: (
+  //       <>
+  //         <p>Our star is far from static. The Sun's surface churns and boils with convective currents, transporting heat from the core to the surface at speeds of thousands of kilometers per hour.</p>
+  //         <p>These movements create complex magnetic fields that twist and tangle, storing enormous amounts of energy. When these fields suddenly snap and reconfigure, they release that energy in explosive outbursts.</p>
+  //         <h3>A Nuclear Powerhouse</h3>
+  //         <p>At its core, the Sun fuses 600 million tons of hydrogen into helium every second, releasing the energy equivalent of 100 billion nuclear bombs. This continuous nuclear reaction has been burning for 4.6 billion years.</p>
+  //       </>
+  //     ),
+  //     pageNum: 2
+  //   },
+  //   {
+  //     title: "Magnetic Mysteries",
+  //     content: (
+  //       <>
+  //         <p>Sunspots are windows into the Sun's powerful magnetic field. They appear in pairs or groups, with opposite magnetic polarities—like the poles of a magnet.</p>
+  //         <p>Some sunspot groups grow to enormous sizes, spanning distances greater than the diameter of Jupiter. The largest recorded sunspot group could have swallowed multiple Earths with room to spare.</p>
+  //         <h3>Predicting Solar Activity</h3>
+  //         <p>Scientists monitor sunspot numbers to predict solar activity. Higher sunspot counts typically mean more solar flares and coronal mass ejections, which can impact satellites, power grids, and communications on Earth.</p>
+  //       </>
+  //     ),
+  //     pageNum: 4
+  //   },
+  //   {
+  //     title: "The Power of Flares",
+  //     content: (
+  //       <>
+  //         <p>The energy released in the largest solar flares equals billions of megatons of TNT. In just a few minutes, they emit as much energy as the Sun normally radiates in several days.</p>
+  //         <h3>Classification System</h3>
+  //         <p>Solar flares are classified by their X-ray brightness: C-class (small), M-class (medium), and X-class (large). Each class is ten times more powerful than the previous one.</p>
+  //         <div className="quote">
+  //           "A single X-class flare releases the energy equivalent of a billion hydrogen bombs exploding simultaneously."
+  //         </div>
+  //         <p>The most powerful flare ever recorded occurred on November 4, 2003, saturating instruments at X28+ class—possibly even stronger.</p>
+  //       </>
+  //     ),
+  //     pageNum: 6
+  //   },
+  //   {
+  //     title: "Coronal Ejections",
+  //     content: (
+  //       <>
+  //         <div className="illustration-container">
+  //           <div className="particle" style={{top: '50px', left: '150px', animationDelay: '0s'}}></div>
+  //           <div className="particle" style={{top: '100px', left: '300px', animationDelay: '1s'}}></div>
+  //           <div className="particle" style={{top: '30px', left: '500px', animationDelay: '0.5s'}}></div>
+  //         </div>
+  //         <p>Coronal Mass Ejections (CMEs) are massive expulsions of plasma and magnetic field from the Sun's corona. A single CME can contain a billion tons of matter traveling at millions of kilometers per hour.</p>
+  //         <p>When directed at Earth, CMEs can trigger geomagnetic storms that disrupt satellite operations, radio communications, and electrical power grids.</p>
+  //       </>
+  //     ),
+  //     pageNum: 8
+  //   },
+  //   {
+  //     title: "Magnetosphere Dynamics",
+  //     content: (
+  //       <>
+  //         <p>Earth's magnetosphere extends about 60,000 kilometers toward the Sun but trails behind Earth for millions of kilometers on the night side, creating a long "magnetotail."</p>
+  //         <h3>When Shields Fail</h3>
+  //         <p>During severe geomagnetic storms, the magnetosphere can be compressed, allowing solar particles to penetrate deeper into Earth's atmosphere. This can cause spectacular auroras at lower latitudes than usual.</p>
+  //         <div className="quote">
+  //           "Without our magnetic shield, the solar wind would have stripped away our atmosphere billions of years ago, leaving Earth as barren as Mars."
+  //         </div>
+  //       </>
+  //     ),
+  //     pageNum: 10
+  //   },
+  //   {
+  //     title: "Living With Solar Weather",
+  //     content: (
+  //       <>
+  //         <p>In our modern, technology-dependent world, understanding and predicting solar weather has become crucial. Space weather forecasters monitor the Sun 24/7, watching for signs of impending eruptions.</p>
+  //         <h3>Protecting Our Technology</h3>
+  //         <p>Power companies can take preventive measures when warned of incoming CMEs. Airlines reroute polar flights to avoid radiation exposure. Satellites can be placed in protective modes.</p>
+  //         <p>As we expand further into space with plans for lunar bases and Mars missions, understanding solar weather becomes even more critical for protecting astronauts and equipment.</p>
+  //       </>
+  //     ),
+  //     pageNum: 12
+  //   },
+  //   {
+  //     title: "Conclusion",
+  //     content: (
+  //       <>
+  //         <p>Solar weather is a reminder of our intimate connection to the cosmos. The same nuclear reactions that power the Sun create the environment that makes life on Earth possible—yet they also pose challenges we must understand and prepare for.</p>
+  //         <p>As our technology advances and we venture further into space, our relationship with solar weather will only deepen. The Sun that gives us life also demands our respect and vigilance.</p>
+  //         <div className="quote">
+  //           "In understanding the Sun, we understand ourselves—children of a star, living in its embrace, forever dancing to its cosmic rhythm."
+  //         </div>
+  //         <p style={{textAlign: 'center', marginTop: '40px', fontStyle: 'italic'}}>~ The End ~</p>
+  //       </>
+  //     ),
+  //     pageNum: 13
+  //   }
+  // ];
+
+  // const leftPages = [
+  //   {
+  //     title: "Introduction",
+  //     content: (
+  //       <>
+  //         <p>For billions of years, our Sun has been the source of all life on Earth. Its warm rays nurture our planet, driving weather patterns and sustaining the intricate web of life.</p>
+  //         <p>Yet beneath its serene appearance lies a tempestuous beast—a roiling mass of nuclear fury that constantly unleashes powerful forces into the cosmos.</p>
+  //         <h3>What is Solar Weather?</h3>
+  //         <p>Solar weather refers to the various phenomena occurring on and around the Sun that can affect Earth and the entire solar system. These include sunspots, solar flares, coronal mass ejections, and the ever-present solar wind.</p>
+  //       </>
+  //     ),
+  //     pageNum: 1
+  //   },
+  //   {
+  //     title: "Sunspots",
+  //     content: (
+  //       <>
+  //         <p>Sunspots are dark regions on the Sun's surface where intense magnetic fields prevent hot plasma from reaching the surface. Though they appear dark, they are still incredibly hot—around 3,500°C.</p>
+  //         <h3>The Solar Cycle</h3>
+  //         <p>The number of sunspots varies in an approximately 11-year cycle. During solar maximum, the Sun's surface may host dozens of sunspot groups. At solar minimum, weeks may pass without a single spot.</p>
+  //         <div className="quote">
+  //           "The Sun's heartbeat pulses with an 11-year rhythm that shapes space weather throughout our cosmic neighborhood."
+  //         </div>
+  //       </>
+  //     ),
+  //     pageNum: 3
+  //   },
+  //   {
+  //     title: "Solar Flares",
+  //     content: (
+  //       <>
+  //         <div className="illustration-container">
+  //           <div className="sun"></div>
+  //           <div className="solar-flare" style={{top: '58px', right: '90px', transform: 'rotate(-25deg)'}}></div>
+  //           <div className="solar-flare" style={{top: '58px', right: '90px', transform: 'rotate(25deg)', animationDelay: '1s'}}></div>
+  //         </div>
+  //         <p>Solar flares are sudden, intense bursts of electromagnetic radiation from the Sun's atmosphere. They occur when magnetic energy built up in the solar atmosphere is suddenly released.</p>
+  //       </>
+  //     ),
+  //     pageNum: 5
+  //   },
+  //   {
+  //     title: "Solar Wind",
+  //     content: (
+  //       <>
+  //         <p>The solar wind is a continuous stream of charged particles flowing from the Sun's corona. This plasma travels at speeds ranging from 250 to 750 kilometers per second.</p>
+  //         <h3>The Heliosphere</h3>
+  //         <p>The solar wind extends far beyond the planets, creating a vast bubble called the heliosphere. This region shields our solar system from interstellar radiation and cosmic rays.</p>
+  //         <div className="quote">
+  //           "An invisible river of plasma connects the Sun to every planet in our solar system."
+  //         </div>
+  //       </>
+  //     ),
+  //     pageNum: 7
+  //   },
+  //   {
+  //     title: "Earth's Shield",
+  //     content: (
+  //       <>
+  //         <div className="illustration-container">
+  //           <div className="orbit">
+  //             <div className="earth"></div>
+  //           </div>
+  //         </div>
+  //         <p>Our planet's magnetic field, generated by the churning of molten iron in Earth's outer core, forms a protective magnetosphere. This invisible shield deflects most of the solar wind's charged particles.</p>
+  //       </>
+  //     ),
+  //     pageNum: 9
+  //   },
+  //   {
+  //     title: "The Aurora",
+  //     content: (
+  //       <>
+  //         <div className="illustration-container">
+  //           <div className="aurora" style={{top: '50px', left: '150px'}}></div>
+  //           <div className="aurora" style={{top: '80px', left: '350px', animationDelay: '2.5s'}}></div>
+  //         </div>
+  //         <p>When solar particles penetrate Earth's magnetic shield near the poles, they collide with atmospheric gases, creating spectacular light displays known as aurora borealis in the north and aurora australis in the south.</p>
+  //       </>
+  //     ),
+  //     pageNum: 11
+  //   }
+  // ];
+
+  let rightPages;
+let leftPages;
+
+if (user.age >= 4 && user.age <= 10) {
+  rightPages = rightPages_6_10;
+  leftPages = leftPages_6_10;
+} else if (user.age > 10 && user.age <= 18) {
+  rightPages = rightPages_10_18;
+  leftPages = leftPages_10_18;
+} else if (user.age > 18) {
+  rightPages = rightPages_18_plus;
+  leftPages = leftPages_18_plus;
+} else {
+  rightPages = rightPages_10_18;
+  leftPages = leftPages_10_18;
+}
 
   return (
     <>
