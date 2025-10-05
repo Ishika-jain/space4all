@@ -15,10 +15,6 @@
     "@testing-library/user-event": "^13.5.0",
     "autoprefixer": "^10.4.21",
     "axios": "^1.12.2",
-<<<<<<< Updated upstream
-=======
-    "framer-motion": "^12.23.22",
->>>>>>> Stashed changes
     "gsap": "^3.13.0",
     "lucide-react": "^0.544.0",
     "postcss": "^8.5.6",
