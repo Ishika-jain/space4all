@@ -16,6 +16,7 @@
     "autoprefixer": "^10.4.21",
     "axios": "^1.12.2",
     "framer-motion": "^12.23.22",
+    "framer": "^2.4.1",
     "gsap": "^3.13.0",
     "lucide-react": "^0.544.0",
     "postcss": "^8.5.6",

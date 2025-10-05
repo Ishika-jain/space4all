@@ -10,6 +10,7 @@ import PilotGame from "../src/pages/PilotGame";
 import UserGame from "../src/pages/UserGame";
 import Glossary from "./pages/Glossary";
 import Chatbot from "./pages/ChatBot";
+import Quiz from "./pages/Quiz";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path="/FarmerGame" element={<FarmerGame />} />
         <Route path="/PilotGame" element={<PilotGame />} />
         <Route path="/UserGame" element={<UserGame />} />
+        <Route path="/Quiz" element={<Quiz/>}/>
       </Routes>
     </Router>
         </div>

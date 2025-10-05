@@ -252,51 +252,49 @@ export default function Landing() {
                 justifyContent: "center",
               }}
             >
-              {/* Sun */}
-    <Box
+{/* Sun */}
+<Box
   sx={{
     position: "absolute",
-    top: "50px",
-    left: "10rem",
-    position:'absolute',
-    left:'210px',
+    top: "30%",
+    left: "50%",
+    transform: "translate(-50%, -50%)", // centers horizontally + vertically
     width: 100,
     height: 100,
     borderRadius: "50%",
-    background: "radial-gradient(circle, #FFEB3B 0%, #FBC02D 90%)",
-    boxShadow: "0 0 40px rgba(255, 235, 59, 0.6)",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    "& .spikes": {
+  }}
+>
+  {/* Spikes */}
+  <Box
+    className="spikes"
+    sx={{
       position: "absolute",
-      width: "0px",
-      height: "0px",
-      top: "40px",
-      left: "-50px",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
       animation: "spin 12s linear infinite",
-    },
-    "& .spikes div": {
-      position: "absolute",
-      width: 0,
-      height: 0,
-      borderLeft: "10px solid transparent",
-      borderRight: "10px solid transparent",
-      borderBottom: "25px solid #FBC02D",
-      transformOrigin: "50% 100%",
-    },
-  }}
->
-  {/* Spikes */}
-  <Box className="spikes">
+      zIndex: 0,
+    }}
+  >
     {[...Array(12)].map((_, i) => (
       <Box
         key={i}
         sx={{
-          transform: `rotate(${i * 30}deg) translateY(-60px)`,
+          position: "absolute",
+          width: 0,
+          height: 0,
+          borderLeft: "10px solid transparent",
+          borderRight: "10px solid transparent",
+          borderBottom: "25px solid #FBC02D",
+          transform: `rotate(${i * 30}deg) translateY(-70px)`,
+          transformOrigin: "center",
         }}
       />
     ))}
@@ -309,11 +307,14 @@ export default function Landing() {
       height: "100%",
       borderRadius: "50%",
       background: "radial-gradient(circle, #FFEE58 0%, #FBC02D 80%)",
-      boxShadow: "inset 0 0 20px rgba(255, 193, 7, 0.8)",
-      left:'30px'
+      boxShadow:
+        "inset 0 0 20px rgba(255, 193, 7, 0.8), 0 0 40px rgba(255, 235, 59, 0.6)",
+      zIndex: 1,
     }}
   />
 </Box>
+
+
 
 
               {/* Title */}

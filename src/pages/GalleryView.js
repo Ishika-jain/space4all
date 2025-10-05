@@ -259,7 +259,7 @@ function GalleryView() {
                       Solar Storm Quiz
                     </Typography>
                     <Typography variant="body1" color="rgba(255,255,255,0.7)">
-                      Challenge yourself with fun quizzes and become a solar weather expert!
+                    Challenge yourself with this fun interactive quiz and become an ultimate solar weather expert!
                     </Typography>
                   </Box>
                 }
