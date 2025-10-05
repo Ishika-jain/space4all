@@ -4,6 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import SpaceBackground from "../components/SpaceBackground";
 import "./ImpactGames.css";
+import pilot from "../assets/pilot.jpg";
+import farmer from "../assets/farmer.png";
+import astronaut from "../assets/astronaut.png";
+import userimg from "../assets/user.png";
 
 // Example User Context
 import { UserContext } from "../context/UserContext";
@@ -19,7 +23,7 @@ const ImpactGames = () => {
       game: "/PilotGame",
       description:
         "Solar flares affect my navigation systems! Play to find out how I handle them in space.",
-      img: "https://cdn3d.iconscout.com/3d/premium/thumb/female-astronaut-avatar-3d-illustration-5970522-4979727.png",
+      img: pilot,
     },
     {
       name: "Max",
@@ -27,7 +31,7 @@ const ImpactGames = () => {
       game: "/FarmerGame",
       description:
         "Solar storms impact my crops. Play to see how I survive unpredictable solar weather!",
-      img: "https://cdn3d.iconscout.com/3d/premium/thumb/farmer-boy-3d-illustration-6911997-5648497.png",
+      img: farmer,
     },
     {
       name: "Nova",
@@ -35,7 +39,7 @@ const ImpactGames = () => {
       game: "/AstronautGame",
       description:
         "Radiation from solar flares can be dangerous! Play to help me stay safe in space.",
-      img: "https://cdn3d.iconscout.com/3d/premium/thumb/astronaut-3d-illustration-6334273-5221261.png",
+      img: astronaut,
     },
     {
       name: user.name === "Guest" ? "You" : user.name,
@@ -43,7 +47,7 @@ const ImpactGames = () => {
       game: "/UserGame",
       description:
         "Solar activity affects your journey. Play to explore how you adapt to cosmic events.",
-      img: "https://cdn3d.iconscout.com/3d/premium/thumb/explorer-3d-illustration-6603637-5460642.png",
+      img: userimg,
     },
   ];
 
