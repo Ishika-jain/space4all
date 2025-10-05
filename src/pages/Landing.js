@@ -213,20 +213,24 @@ export default function Landing() {
           />
 
           {/* Pages */}
-          <Box
-            sx={{
-              position: "absolute",
-              right: 0,
-              top: "15px",
-              bottom: "15px",
-              left:'275px',
-              width: "15px",
-              background: "linear-gradient(to right,#f8f8f8 0%,#e0e0e0 20%,#f8f8f8 40%,#e0e0e0 60%,#f8f8f8 80%,#e0e0e0 100%)",
-              transform: "translateX(25px) translateZ(-12px) rotateY(5deg)",
-              boxShadow: "-3px 0 10px rgba(0,0,0,0.3)",
-              borderRadius: "0 6px 6px 0",
-            }}
-          />
+         <Box
+  sx={{
+    position: "absolute",
+    right: 0,
+    top: "7px",
+    bottom: "7px",
+    left: "275px",
+    width: "15px",
+    background:
+      "linear-gradient(to right, #f8f8f8 0%, #e0e0e0 20%, #f8f8f8 40%, #e0e0e0 60%, #f8f8f8 80%, #e0e0e0 100%)",
+    transform: "translateX(25px) translateZ(-12px) rotateY(5deg)",
+    boxShadow: "-3px 0 10px rgba(0,0,0,0.3)",
+    borderRadius: "0 6px 6px 0",
+
+    clipPath: "polygon(0 0, 100% 3px, 100% calc(100% - 3px), 0 100%)",
+  }}
+/>
+
 
           {/* Cover */}
           <Box
@@ -328,7 +332,7 @@ export default function Landing() {
                   marginTop:'150px'
                 }}
               >
-                SPACE<br />WEATHER
+                SPACE WEATHER
               </Typography>
 
               {/* Subtitle */}

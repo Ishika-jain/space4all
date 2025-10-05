@@ -1,0 +1,41 @@
+.farmer-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  min-height: 100vh;
+  padding: 2.5rem 1rem;
+  box-sizing: border-box;
+}
+
+.farmer-header {
+  text-align: center;
+}
+
+.farmer-title {
+  font-size: 1.875rem; 
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.farmer-subtitle {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  opacity: 0.8;
+}
+
+.farmer-game-section {
+  width: 100%;
+  width: 720px;
+  height: 408px; 
+  box-sizing: border-box;
+  transform: scale(1.2); 
+  transform-origin: center;
+}
+
+@media (max-width: 768px) {
+  .farmer-game-section {
+    transform: scale(1);
+    max-width: 100%;
+  }
+}

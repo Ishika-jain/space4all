@@ -1,67 +1,108 @@
-import React from "react";
+"use client";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import "./ImpactGames.css"; // we'll add styles here
+import { motion } from "framer-motion";
+import SpaceBackground from "../components/SpaceBackground";
+import "./ImpactGames.css";
 
-const roles = [
-  {
-    name: "Luna",
-    role: "Pilot",
-    game: "/PilotGame",
-    description:
-      "Solar flares affect my navigation systems! Play to find out how I handle them in space.",
-    img: "https://i.imgur.com/8Km9tLL.png", // placeholder image
-  },
-  {
-    name: "Max",
-    role: "Farmer",
-    game: "/FarmerGame",
-    description:
-      "Solar storms impact my crops. Play to see how I survive unpredictable solar weather!",
-    img: "https://i.imgur.com/q5cXo8V.png",
-  },
-  {
-    name: "Nova",
-    role: "Astronaut",
-    game: "/AstronautGame",
-    description:
-      "Radiation from solar flares can be dangerous! Play to help me stay safe in space.",
-    img: "https://i.imgur.com/1Yc8t5x.png",
-  },
-  {
-    name: "Alex",
-    role: "Explorer",
-    game: "/UserGame",
-    description:
-      "Solar activity affects my journey! Play to explore how I adapt to cosmic events.",
-    img: "https://i.imgur.com/HsXGZ8U.png",
-  },
-];
+// Example User Context
+import { UserContext } from "../context/UserContext";
 
-function ImpactGames() {
+const ImpactGames = () => {
   const navigate = useNavigate();
+  const { user } = useContext(UserContext) || { user: { name: "Guest" } };
+
+  const roles = [
+    {
+      name: "Luna",
+      role: "Pilot",
+      game: "/PilotGame",
+      description:
+        "Solar flares affect my navigation systems! Play to find out how I handle them in space.",
+      img: "https://cdn3d.iconscout.com/3d/premium/thumb/female-astronaut-avatar-3d-illustration-5970522-4979727.png",
+    },
+    {
+      name: "Max",
+      role: "Farmer",
+      game: "/FarmerGame",
+      description:
+        "Solar storms impact my crops. Play to see how I survive unpredictable solar weather!",
+      img: "https://cdn3d.iconscout.com/3d/premium/thumb/farmer-boy-3d-illustration-6911997-5648497.png",
+    },
+    {
+      name: "Nova",
+      role: "Astronaut",
+      game: "/AstronautGame",
+      description:
+        "Radiation from solar flares can be dangerous! Play to help me stay safe in space.",
+      img: "https://cdn3d.iconscout.com/3d/premium/thumb/astronaut-3d-illustration-6334273-5221261.png",
+    },
+    {
+      name: user.name === "Guest" ? "You" : user.name,
+      role: "Explorer",
+      game: "/UserGame",
+      description:
+        "Solar activity affects your journey. Play to explore how you adapt to cosmic events.",
+      img: "https://cdn3d.iconscout.com/3d/premium/thumb/explorer-3d-illustration-6603637-5460642.png",
+    },
+  ];
 
   return (
-    <div className="impact-container">
-      <h1>Choose Your Role</h1>
-      <p className="subtitle">
-        Find how solar weather impacts you. Ready to play a game?
-      </p>
-      <div className="roles-grid">
-        {roles.map((role) => (
-          <div
-            key={role.name}
-            className="role-card"
-            onClick={() => navigate(role.game)}
-          >
-            <img src={role.img} alt={role.name} className="role-img" />
-            <h2>{role.name}</h2>
-            <h4>{role.role}</h4>
-            <div className="role-dialog">{role.description}</div>
-          </div>
-        ))}
+    <div className="impact-page">
+      <SpaceBackground />
+
+      <div className="impact-overlay">
+        <motion.div
+          initial={{ opacity: 0, y: -40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="header-section"
+        >
+          <p className="subtitle">
+            WANT TO KNOW HOW SOLAR WEATHER IMPACTS YOU?
+            {" "}
+            
+            <br /><br/>
+
+            SELECT YOUR ROLE, {" "}
+            <span className="highlight">
+              {user.name === "Guest" ? "Explorer" : user.name}.
+            </span>
+          </p>
+        </motion.div>
+
+        <motion.div
+          className="roles-grid"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5, duration: 1 }}
+        >
+          {roles.map((role, index) => (
+            <motion.div
+              key={role.name}
+              className="role-card neon-card"
+              onClick={() => navigate(role.game)}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2 * index }}
+              whileHover={{
+                rotateY: 8,
+                scale: 1.06,
+                boxShadow: "0 0 40px rgba(0, 255, 255, 0.6)",
+              }}
+            >
+              <div className="role-img-wrapper">
+                <img src={role.img} alt={role.name} className="role-img" />
+              </div>
+              <h2 className="role-name">{role.name}</h2>
+              <h4 className="role-type">{role.role}</h4>
+              <p className="role-dialog">{role.description}</p>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </div>
   );
-}
+};
 
 export default ImpactGames;
