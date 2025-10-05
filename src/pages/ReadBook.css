@@ -1,396 +1,85 @@
+body {
+  margin: 0;
+  background: #050505;
+  color: #fff;
+  font-family: Georgia, serif;
+}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+.book-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  perspective: 2000px;
+  width: 900px;
+  height: 500px;
+}
 
-        body {
-            font-family: 'Georgia', serif;
-            background: radial-gradient(ellipse at center, #1a1a2e 0%, #0a0a0f 100%);
-            color: #2c2c2c;
-            overflow-x: hidden;
-            /* height: 500vh; */
-        }
+.book {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+}
 
-        .book-container {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            perspective: 2500px;
-            z-index: 10;
-        }
+.spine {
+  position: absolute;
+  width: 30px;
+  height: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  z-index: 1000;
+}
 
-        .book {
-            width: 1600px;
-            height: 700px;
-            position: relative;
-            transform-style: preserve-3d;
-            display: flex;
-            box-shadow: 0 30px 80px rgba(0,0,0,0.6);
-        }
+.book-half {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  top: 0;
+  overflow: hidden;
+}
 
-        .book-half {
-            width: 800px;
-            height: 700px;
-            position: relative;
-            transform-style: preserve-3d;
-        }
+.left-half {
+  left: 0;
+}
 
-        .page {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to right, #f8f5ed 0%, #fefdfb 50%, #f9f6ee 100%);
-            padding: 60px 70px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            backface-visibility: hidden;
-            box-shadow: inset 0 0 50px rgba(139, 69, 19, 0.05);
-            overflow: hidden;
-        }
+.right-half {
+  right: 0;
+}
 
-        .page::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 40px;
-            background: linear-gradient(to right, rgba(0,0,0,0.08) 0%, transparent 100%);
-            pointer-events: none;
-        }
+.page {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  background: #fafafa;
+  color: #222;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+}
 
-        .page-left {
-            border-radius: 15px 0 0 15px;
-            text-align: left;
-            border-right: 1px solid rgba(139, 69, 19, 0.15);
-        }
+.page-left {
+  transform-origin: right center;
+  z-index: 1;
+}
 
-        .page-left::after {
-            right: 0;
-        }
+.page-right {
+  transform-origin: left center;
+  z-index: 2;
+}
 
-        .page-right {
-            border-radius: 0 15px 15px 0;
-            text-align: left;
-            transform-origin: left center;
-            border-left: 1px solid rgba(139, 69, 19, 0.15);
-        }
+.cover {
+  background: linear-gradient(135deg, #ffbb33, #ff7733);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
 
-        .page-right::after {
-            left: 0;
-            background: linear-gradient(to left, rgba(0,0,0,0.08) 0%, transparent 100%);
-        }
-
-        /* Paper texture */
-        .page::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(139, 69, 19, 0.02) 2px, rgba(139, 69, 19, 0.02) 4px),
-                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(139, 69, 19, 0.02) 2px, rgba(139, 69, 19, 0.02) 4px);
-            pointer-events: none;
-            opacity: 0.3;
-        }
-
-        .page h1 {
-            font-size: 3.2rem;
-            margin-bottom: 30px;
-            color: #2c1810;
-            font-weight: normal;
-            letter-spacing: 2px;
-        }
-
-        .page h2 {
-            font-size: 2.8rem;
-            margin-bottom: 25px;
-            color: #3d2817;
-            font-weight: normal;
-            border-bottom: 3px solid #d4a574;
-            padding-bottom: 15px;
-            display: inline-block;
-        }
-
-        .page h3 {
-            font-size: 1.8rem;
-            margin: 25px 0 15px 0;
-            color: #4a2c17;
-            font-weight: normal;
-        }
-
-        .page p {
-            font-size: 1.18rem;
-            line-height: 2;
-            margin: 15px 0;
-            color: #3a3a3a;
-            text-align: justify;
-            text-indent: 30px;
-        }
-
-        .page p:first-of-type {
-            text-indent: 0;
-        }
-
-        .page-number {
-            position: absolute;
-            bottom: 40px;
-            font-size: 1.1rem;
-            color: #8b6f47;
-            font-style: italic;
-        }
-
-        .page-left .page-number {
-            left: 60px;
-        }
-
-        .page-right .page-number {
-            right: 60px;
-        }
-
-        .cover-page {
-            background: linear-gradient(135deg, #8b4513 0%, #a0522d 50%, #cd853f 100%);
-            color: white;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            border: none;
-            box-shadow: inset 0 0 100px rgba(0,0,0,0.3);
-        }
-
-        .cover-page::before {
-            background: none;
-        }
-
-        .cover-page::after {
-            display: none;
-        }
-
-        .cover-page h1 {
-            color: #ffe4b5;
-            font-size: 5rem;
-            text-shadow: 4px 4px 12px rgba(0,0,0,0.7);
-            letter-spacing: 4px;
-        }
-
-        .cover-page .subtitle {
-            color: #ffd4a3;
-            font-size: 1.8rem;
-            margin-top: 20px;
-            font-style: italic;
-            text-indent: 0;
-        }
-
-        .back-cover {
-            background: linear-gradient(135deg, #cd853f 0%, #a0522d 50%, #8b4513 100%);
-            color: white;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            border: none;
-        }
-
-        .back-cover::before,
-        .back-cover::after {
-            display: none;
-        }
-
-        .spine {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            top: 0;
-            width: 30px;
-            height: 100%;
-            background: linear-gradient(to bottom, #5c3317 0%, #3d2213 50%, #5c3317 100%);
-            box-shadow: 
-                inset 4px 0 8px rgba(0,0,0,0.5),
-                inset -4px 0 8px rgba(0,0,0,0.5),
-                0 0 20px rgba(0,0,0,0.4);
-            z-index: 100;
-            border-radius: 3px;
-        }
-
-        .spine::before {
-            content: '';
-            position: absolute;
-            top: 10%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 80%;
-            background: rgba(255,215,0,0.3);
-            box-shadow: 0 0 5px rgba(255,215,0,0.5);
-        }
-
-        .flourish {
-            font-size: 2rem;
-            color: #cd853f;
-            margin: 20px 0;
-            text-align: center;
-        }
-
-        .quote {
-            font-style: italic;
-            font-size: 1.2rem;
-            color: #5a5a5a;
-            border-left: 4px solid #cd853f;
-            padding-left: 20px;
-            margin: 25px 0;
-            text-indent: 0 !important;
-        }
-
-        .scroll-indicator {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #ffa500;
-            font-size: 1.1rem;
-            z-index: 100;
-            animation: bounce 2s infinite;
-            text-shadow: 0 0 10px rgba(255, 165, 0, 0.5);
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-            40% { transform: translateX(-50%) translateY(-10px); }
-            60% { transform: translateX(-50%) translateY(-5px); }
-        }
-
-        /* Solar animations */
-        .sun {
-            width: 140px;
-            height: 140px;
-            background: radial-gradient(circle, #ffeb3b, #ff9800);
-            border-radius: 50%;
-            position: absolute;
-            box-shadow: 0 0 60px rgba(255, 152, 0, 0.9);
-            animation: pulse 3s infinite;
-            top: 10px;
-            right: 160px;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 60px rgba(255, 152, 0, 0.9); }
-            50% { transform: scale(1.08); box-shadow: 0 0 90px rgba(255, 152, 0, 1); }
-        }
-
-        .solar-flare {
-            position: absolute;
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(90deg, #ff9800, #ff4500, transparent);
-            animation: flare 2s infinite;
-        }
-
-        @keyframes flare {
-            0%, 100% { opacity: 0; transform: scaleX(0); }
-            50% { opacity: 1; transform: scaleX(1); }
-        }
-
-        .particle {
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            background: radial-gradient(circle, #ffa500, #ff6b00);
-            border-radius: 50%;
-            box-shadow: 0 0 10px rgba(255, 165, 0, 0.8);
-        }
-
-        .aurora {
-            position: absolute;
-            width: 250px;
-            height: 180px;
-            background: linear-gradient(180deg, transparent, rgba(0, 255, 100, 0.5), rgba(100, 200, 255, 0.5), transparent);
-            filter: blur(25px);
-            animation: wave 5s infinite;
-        }
-
-        @keyframes wave {
-            0%, 100% { transform: skewX(0deg) translateX(0); opacity: 0.7; }
-            25% { transform: skewX(12deg) translateX(25px); opacity: 1; }
-            75% { transform: skewX(-12deg) translateX(-25px); opacity: 1; }
-        }
-
-        .orbit {
-            position: absolute;
-            width: 160px;
-            height: 160px;
-            border: 3px dashed rgba(205, 133, 63, 0.4);
-            border-radius: 50%;
-            animation: rotate 10s linear infinite;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        @keyframes rotate {
-            from { transform: translate(-50%, -50%) rotate(0deg); }
-            to { transform: translate(-50%, -50%) rotate(360deg); }
-        }
-
-        .earth {
-            width: 45px;
-            height: 45px;
-            background: radial-gradient(circle at 35% 35%, #4dabf7, #1971c2, #0c4a7a);
-            border-radius: 50%;
-            position: absolute;
-            top: -22px;
-            left: 50%;
-            transform: translateX(-50%);
-            box-shadow: 0 0 25px rgba(73, 171, 247, 0.7);
-        }
-
-        .earth::after {
-            content: '';
-            position: absolute;
-            width: 15px;
-            height: 15px;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            top: 8px;
-            left: 12px;
-        }
-
-        .illustration-container {
-            position: relative;
-            width: 100%;
-            height: 300px;
-            margin: 30px 0;
-        }
-
-        @media (max-width: 1650px) {
-            .book {
-                width: 90vw;
-                height: auto;
-                aspect-ratio: 2.29/1;
-            }
-            
-            .book-half {
-                width: 45vw;
-                height: auto;
-            }
-            
-            .page {
-                padding: 40px 50px;
-            }
-            
-            .page h1 {
-                font-size: 2.5rem;
-            }
-            
-            .page h2 {
-                font-size: 2.2rem;
-            }
-            
-            .page p {
-                font-size: 1rem;
-            }
-        }
-    
+h1, h2, p {
+  margin: 10px 0;
+}
