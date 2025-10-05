@@ -356,6 +356,7 @@ export default function Landing() {
                 "&:hover": { background: "#fb8c00" }
               }}
               startIcon={<RocketIcon />}
+              onClick={()=>navigate('/GalleryView')}
             >
               Start Exploring
             </Button>
@@ -371,6 +372,7 @@ export default function Landing() {
                 "&:hover": { background: "rgba(255,255,255,0.1)" }
               }}
               startIcon={<MenuBookIcon />}
+              onClick={()=>navigate('/ReadBook')}
             >
               Read Flipbook
             </Button>

@@ -624,7 +624,7 @@ export default function ReadBook() {
               id="left-page-5"
               style={{ zIndex: 5 }}
             >
-              <h2>Earth's Shield</h2>
+            <h2>Earth's Shield</h2>
               <div className="illustration-container">
                 <div className="orbit">
                   <div className="earth"></div>
