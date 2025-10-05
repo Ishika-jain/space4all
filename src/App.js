@@ -9,6 +9,7 @@ import FarmerGame from "../src/pages/FarmerGame";
 import PilotGame from "../src/pages/PilotGame";
 import UserGame from "../src/pages/UserGame";
 import Glossary from "./pages/Glossary";
+import Chatbot from "./pages/ChatBot";
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
     <div className="black-bg" 
     // style={{backgroundColor: "black"}}
     >
-
+   <Chatbot/>
     <Router>
       <Routes>
         <Route path="/" element={<Landing />} />
