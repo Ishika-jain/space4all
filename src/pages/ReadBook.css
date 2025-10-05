@@ -10,7 +10,7 @@
             background: radial-gradient(ellipse at center, #1a1a2e 0%, #0a0a0f 100%);
             color: #2c2c2c;
             overflow-x: hidden;
-            height: 500vh;
+            /* height: 500vh; */
         }
 
         .book-container {
@@ -272,8 +272,8 @@
             position: absolute;
             box-shadow: 0 0 60px rgba(255, 152, 0, 0.9);
             animation: pulse 3s infinite;
-            top: 200px;
-            right: 100px;
+            top: 10px;
+            right: 160px;
         }
 
         @keyframes pulse {

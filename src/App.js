@@ -13,6 +13,10 @@ import Glossary from "./pages/Glossary";
 function App() {
   return (
 
+    <div className="black-bg" 
+    // style={{backgroundColor: "black"}}
+    >
+
     <Router>
       <Routes>
         <Route path="/" element={<Landing />} />
@@ -27,6 +31,8 @@ function App() {
         <Route path="/UserGame" element={<UserGame />} />
       </Routes>
     </Router>
+        </div>
+
 
   );
 }

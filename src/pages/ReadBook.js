@@ -521,25 +521,18 @@ export default function ReadBook() {
               id="left-page-1"
               style={{ zIndex: 1 }}
             >
-              <h2>Introduction</h2>
+                <h2>The Dynamic Sun</h2>
               <p>
-                For billions of years, our Sun has been the source of all life
-                on Earth. Its warm rays nurture our planet, driving weather
-                patterns and sustaining the intricate web of life.
+                The Sun’s surface boils with powerful currents carrying heat from its core. These movements twist magnetic fields until they snap, releasing immense bursts of energy.
               </p>
+              <h3>A Nuclear Powerhouse</h3>
               <p>
-                Yet beneath its serene appearance lies a tempestuous beast—a
-                roiling mass of nuclear fury that constantly unleashes powerful
-                forces into the cosmos.
+                At core, the Sun fuses 600 million tons of hydrogen into
+                helium every second, releasing the energy equivalent of 100
+                billion nuclear bombs. This nuclear reaction has been
+                burning for 4.6B years.
               </p>
-              <h3>What is Solar Weather?</h3>
-              <p>
-                Solar weather refers to the various phenomena occurring on and
-                around the Sun that can affect Earth and the entire solar
-                system. These include sunspots, solar flares, coronal mass
-                ejections, and the ever-present solar wind.
-              </p>
-              <div className="page-number">1</div>
+              <div className="page-number">2</div>
             </div>
 
             <div
@@ -549,9 +542,9 @@ export default function ReadBook() {
             >
               <h2>Sunspots</h2>
               <p>
-                Sunspots are dark regions on the Sun's surface where intense
+                Sunspots are regions on the Sun's surface where intense
                 magnetic fields prevent hot plasma from reaching the surface.
-                Though they appear dark, they are still incredibly hot—around
+                Though they appear dark, they are incredibly hot—around
                 3,500°C.
               </p>
               <h3>The Solar Cycle</h3>
@@ -561,11 +554,11 @@ export default function ReadBook() {
                 sunspot groups. At solar minimum, weeks may pass without a
                 single spot.
               </p>
-              <div className="quote">
+              {/* <div className="quote">
                 "The Sun's heartbeat pulses with an 11-year rhythm that shapes
                 space weather throughout our cosmic neighborhood."
-              </div>
-              <div className="page-number">3</div>
+              </div> */}
+              <div className="page-number">4</div>
             </div>
 
             <div
@@ -576,10 +569,10 @@ export default function ReadBook() {
               <h2>Solar Flares</h2>
               <div className="illustration-container">
                 <div className="sun"></div>
-                <div
+                {/* <div
                   className="solar-flare"
                   style={{
-                    top: "208px",
+                    top: "108px",
                     right: "240px",
                     transform: "rotate(-25deg)",
                   }}
@@ -592,14 +585,14 @@ export default function ReadBook() {
                     transform: "rotate(25deg)",
                     animationDelay: "1s",
                   }}
-                ></div>
+                ></div> */}
               </div>
               <p>
                 Solar flares are sudden, intense bursts of electromagnetic
                 radiation from the Sun's atmosphere. They occur when magnetic
                 energy built up in the solar atmosphere is suddenly released.
               </p>
-              <div className="page-number">5</div>
+              <div className="page-number">6</div>
             </div>
 
             <div
@@ -623,7 +616,7 @@ export default function ReadBook() {
                 "An invisible river of plasma connects the Sun to every planet
                 in our solar system."
               </div>
-              <div className="page-number">7</div>
+              <div className="page-number">8</div>
             </div>
 
             <div
@@ -643,7 +636,7 @@ export default function ReadBook() {
                 This invisible shield deflects most of the solar wind's charged
                 particles.
               </p>
-              <div className="page-number">9</div>
+              <div className="page-number">10</div>
             </div>
 
             <div
@@ -668,7 +661,7 @@ export default function ReadBook() {
                 light displays known as aurora borealis in the north and aurora
                 australis in the south.
               </p>
-              <div className="page-number">11</div>
+              <div className="page-number">12</div>
             </div>
 
             <div className="page page-left back-cover" style={{ zIndex: 7 }}>
@@ -707,26 +700,25 @@ export default function ReadBook() {
               id="right-page-1"
               style={{ zIndex: 7 }}
             >
-              <h2>The Dynamic Sun</h2>
+
+              <h2>Introduction</h2>
               <p>
-                Our star is far from static. The Sun's surface churns and boils
-                with convective currents, transporting heat from the core to the
-                surface at speeds of thousands of kilometers per hour.
+                For billions of years, our Sun has been the source of all life
+                on Earth. Its warm rays nurture our planet, driving weather
+                patterns and sustaining the intricate web of life.
               </p>
+              
+              <h3>What is Solar Weather?</h3>
               <p>
-                These movements create complex magnetic fields that twist and
-                tangle, storing enormous amounts of energy. When these fields
-                suddenly snap and reconfigure, they release that energy in
-                explosive outbursts.
+                Solar weather refers to the various phenomena occurring on and
+                around the Sun that can affect Earth and the entire solar
+                system. These include sunspots, solar flares, coronal mass
+                ejections, and the ever-present solar wind.
               </p>
-              <h3>A Nuclear Powerhouse</h3>
-              <p>
-                At its core, the Sun fuses 600 million tons of hydrogen into
-                helium every second, releasing the energy equivalent of 100
-                billion nuclear bombs. This continuous nuclear reaction has been
-                burning for 4.6 billion years.
-              </p>
-              <div className="page-number">2</div>
+              <div className="page-number">1</div>
+
+
+            
             </div>
 
             <div
@@ -740,12 +732,12 @@ export default function ReadBook() {
                 They appear in pairs or groups, with opposite magnetic
                 polarities—like the poles of a magnet.
               </p>
-              <p>
+              {/* <p>
                 Some sunspot groups grow to enormous sizes, spanning distances
                 greater than the diameter of Jupiter. The largest recorded
                 sunspot group could have swallowed multiple Earths with room to
                 spare.
-              </p>
+              </p> */}
               <h3>Predicting Solar Activity</h3>
               <p>
                 Scientists monitor sunspot numbers to predict solar activity.
@@ -753,7 +745,7 @@ export default function ReadBook() {
                 coronal mass ejections, which can impact satellites, power
                 grids, and communications on Earth.
               </p>
-              <div className="page-number">4</div>
+              <div className="page-number">3</div>
             </div>
 
             <div
@@ -782,7 +774,7 @@ export default function ReadBook() {
                 2003, saturating instruments at X28+ class—possibly even
                 stronger.
               </p>
-              <div className="page-number">6</div>
+              <div className="page-number">5</div>
             </div>
 
             <div
@@ -826,7 +818,7 @@ export default function ReadBook() {
                 disrupt satellite operations, radio communications, and
                 electrical power grids.
               </p>
-              <div className="page-number">8</div>
+              <div className="page-number">7</div>
             </div>
 
             <div
@@ -852,7 +844,7 @@ export default function ReadBook() {
                 away our atmosphere billions of years ago, leaving Earth as
                 barren as Mars."
               </div>
-              <div className="page-number">10</div>
+              <div className="page-number">9</div>
             </div>
 
             <div
@@ -878,7 +870,7 @@ export default function ReadBook() {
                 Mars missions, understanding solar weather becomes even more
                 critical for protecting astronauts and equipment.
               </p>
-              <div className="page-number">12</div>
+              <div className="page-number">11</div>
             </div>
 
             <div
