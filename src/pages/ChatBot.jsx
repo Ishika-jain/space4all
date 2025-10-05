@@ -72,7 +72,7 @@ export default function Chatbot() {
           position: "fixed",
           bottom: "25px",
           right: "25px",
-          background: "#yellow",
+          background: "yellow",
           color: "white",
           border: "none",
           borderRadius: "50%",
